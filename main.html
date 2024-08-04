@@ -28,8 +28,9 @@ Open modal
   <p>Modal Body Content</p>
 </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-secondary close-modal">Close</button>
       </div>
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false">
     </div>
   </div>
 </div>
@@ -43,17 +44,17 @@ $(document).ready(function(){
 </script>
 	<script>
 $(document).ready(function(){
-  var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
-    keyboard: false,
-    backdrop: 'static'
-  })
-
-  $('#openModal').click(function(){
-    myModal.show();
-  });
+  var myModal = document.getElementById('exampleModal')
+  var myModalInstance = bootstrap.Modal.getInstance(myModal)
 
   $('.close-modal').click(function(){
-    myModal.hide();
+    myModalInstance.hide();
+  });
+
+  $(document).click(function(event) {
+    if ($(event.target).is('.modal')) {
+      myModalInstance.hide();
+    }
   });
 });
 </script>
