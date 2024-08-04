@@ -25,7 +25,7 @@ Open modal
         </button>
       </div>
      <div class="modal-body">
-  <p>modal boy content</p>
+  <p>Modal Body Content</p>
 </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -39,6 +39,22 @@ Open modal
 	<script>
 $(document).ready(function(){
   $("#exampleModal").modal();
+});
+</script>
+	<script>
+$(document).ready(function(){
+  var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+    keyboard: false,
+    backdrop: 'static'
+  })
+
+  $('#openModal').click(function(){
+    myModal.show();
+  });
+
+  $('.close-modal').click(function(){
+    myModal.hide();
+  });
 });
 </script>
 </body>
